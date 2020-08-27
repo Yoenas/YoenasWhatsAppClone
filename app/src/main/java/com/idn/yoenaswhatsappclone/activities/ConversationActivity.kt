@@ -3,12 +3,12 @@ package com.idn.yoenaswhatsappclone.activities
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -17,7 +17,6 @@ import com.idn.yoenaswhatsappclone.R
 import com.idn.yoenaswhatsappclone.adapter.ConversationAdapter
 import com.idn.yoenaswhatsappclone.util.*
 import kotlinx.android.synthetic.main.activity_conversation.*
-import kotlinx.android.synthetic.main.activity_profile.*
 
 class ConversationActivity : AppCompatActivity() {
 
@@ -33,8 +32,8 @@ class ConversationActivity : AppCompatActivity() {
     companion object {
         private val PARAM_CHAT_ID = "Chat_id"
         private val PARAM_IMAGE_URL = "Image_url"
-        private val PARAM_OTHER_USER_ID = "Other_user_id"
         private val PARAM_CHAT_NAME = "Chat_name"
+        val PARAM_OTHER_USER_ID = "Other_user_id"
 
         fun newIntent(
             context: Context?,
@@ -109,8 +108,10 @@ class ConversationActivity : AppCompatActivity() {
 
         imbtn_send.setOnClickListener {
             if (!edt_message.text.isNullOrEmpty()) {
-                val message =
-                    Message(userId, edt_message.text.toString(), System.currentTimeMillis())
+                val message = Message(
+                    userId, edt_message.text.toString(),
+                    System.currentTimeMillis()
+                )
                 firebaseDb.collection(DATA_CHATS)
                     .document(chatId!!)
                     .collection(DATA_CHAT_MESSAGE)
@@ -120,7 +121,7 @@ class ConversationActivity : AppCompatActivity() {
             }
         }
 
-        firebaseDb.collection(DATA_USERS).document(userId!!).get()
+        firebaseDb.collection(DATA_USERS).document(otherUserId!!).get()
             .addOnSuccessListener {
                 val user = it.toObject(User::class.java)
                 phone = user?.phone
@@ -140,6 +141,7 @@ class ConversationActivity : AppCompatActivity() {
         when (item.itemId){
             R.id.action_profile -> {
                 val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra(PARAM_OTHER_USER_ID, otherUserId)
                 startActivity(intent)
             }
             R.id.action_call -> {

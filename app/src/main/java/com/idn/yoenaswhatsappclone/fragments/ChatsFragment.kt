@@ -1,10 +1,10 @@
 package com.idn.yoenaswhatsappclone.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -62,9 +62,7 @@ class ChatsFragment : Fragment(), ChatClickListener {
     }
 
     private fun refreshChats() {
-        firebaseDb.collection(DATA_USERS)
-            .document(userId!!)
-            .get()
+        firebaseDb.collection(DATA_USERS).document(userId!!).get()
             .addOnSuccessListener {
                 if (it.contains(DATA_USER_CHATS)) {
                     val partners = it[DATA_USER_CHATS]
@@ -83,16 +81,13 @@ class ChatsFragment : Fragment(), ChatClickListener {
     }
 
     fun newChat(partnerId: String) {
-        firebaseDb.collection(DATA_USERS)
-            .document(userId!!)
-            .get()
+        firebaseDb.collection(DATA_USERS).document(userId!!).get()
             .addOnSuccessListener { userDocument ->
                 val userChatPartners = hashMapOf<String, String>()
                 if (userDocument[DATA_USER_CHATS] != null &&
                     userDocument[DATA_USER_CHATS] is HashMap<*, *>
                 ) {
-                    val userDocumentMap =
-                        userDocument[DATA_USER_CHATS] as HashMap<String, String>
+                    val userDocumentMap = userDocument[DATA_USER_CHATS] as HashMap<String, String>
                     if (userDocumentMap.containsKey(partnerId)) {
                         return@addOnSuccessListener
                     } else {
@@ -100,9 +95,7 @@ class ChatsFragment : Fragment(), ChatClickListener {
                     }
                 }
 
-                firebaseDb.collection(DATA_USERS)
-                    .document(partnerId)
-                    .get()
+                firebaseDb.collection(DATA_USERS).document(partnerId).get()
                     .addOnSuccessListener { partnerDocument ->
                         val partnerChatPartners = hashMapOf<String, String>()
                         if (partnerDocument[DATA_USER_CHATS] != null && partnerDocument[DATA_USER_CHATS] is HashMap<*, *>) {
@@ -145,6 +138,14 @@ class ChatsFragment : Fragment(), ChatClickListener {
         chatsImageUrl: String?,
         chatsName: String?
     ) {
-        startActivity(ConversationActivity.newIntent(context, chatId, chatsImageUrl, otherUserId, chatsName))
+        startActivity(
+            ConversationActivity.newIntent(
+                context,
+                chatId,
+                chatsImageUrl,
+                otherUserId,
+                chatsName
+            )
+        )
     }
 }

@@ -5,12 +5,13 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
@@ -19,12 +20,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.idn.yoenaswhatsappclone.R
 import com.idn.yoenaswhatsappclone.adapter.SectionPagerAdapter
 import com.idn.yoenaswhatsappclone.fragments.ChatsFragment
-import com.idn.yoenaswhatsappclone.fragments.StatusListFragment
-import com.idn.yoenaswhatsappclone.fragments.StatusUpdateFragment
 import com.idn.yoenaswhatsappclone.listener.FailureCallback
-import com.idn.yoenaswhatsappclone.util.*
+import com.idn.yoenaswhatsappclone.util.DATA_USERS
+import com.idn.yoenaswhatsappclone.util.DATA_USER_PHONE
+import com.idn.yoenaswhatsappclone.util.PERMISSION_REQUEST_READ_CONTACT
+import com.idn.yoenaswhatsappclone.util.REQUEST_NEW_CHATS
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_status_update.*
 
 class MainActivity : AppCompatActivity(), FailureCallback {
 
@@ -208,23 +209,14 @@ class MainActivity : AppCompatActivity(), FailureCallback {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_profile -> onProfile()
-            R.id.action_logout -> onLogout()
+            R.id.action_profile -> startActivity(Intent(this, ProfileActivity::class.java))
+            R.id.action_logout -> {
+                firebaseAuth.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
         }
-
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun onProfile() {
-        val intent = Intent(this, ProfileActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun onLogout() {
-        firebaseAuth.signOut()
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 
     override fun onUserError() {
@@ -233,5 +225,4 @@ class MainActivity : AppCompatActivity(), FailureCallback {
         startActivity(intent)
         finish()
     }
-
 }

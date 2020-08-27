@@ -2,10 +2,10 @@ package com.idn.yoenaswhatsappclone.activities
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idn.yoenaswhatsappclone.R
@@ -31,15 +31,15 @@ class ContactsActivity : AppCompatActivity(), ContactsClickListener {
         contactsList.clear()
         val newList = ArrayList<Contact>()
         val phone = contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-            null,
-            null,
-            null,
-            null
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null
         )
-        while (phone!!.moveToNext()){
-            val name = phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-            val phoneNumber = phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+        while (phone!!.moveToNext()) {
+            val name = phone.getString(
+                phone
+                    .getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+            )
+            val phoneNumber =
+                phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
             newList.add(Contact(name, phoneNumber))
         }
         contactsList.addAll(newList)

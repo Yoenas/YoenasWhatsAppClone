@@ -1,8 +1,6 @@
 package com.idn.yoenaswhatsappclone.activities
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +8,7 @@ import android.view.View
 import android.view.Window
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.idn.yoenaswhatsappclone.R
@@ -118,4 +117,9 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun onon() {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
 }

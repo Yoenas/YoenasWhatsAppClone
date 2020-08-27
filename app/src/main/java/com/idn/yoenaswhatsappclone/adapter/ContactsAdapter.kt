@@ -39,5 +39,4 @@ class ContactsAdapter(val contacts: ArrayList<Contact>) :
         clickListener = listener
         notifyDataSetChanged()
     }
-
 }

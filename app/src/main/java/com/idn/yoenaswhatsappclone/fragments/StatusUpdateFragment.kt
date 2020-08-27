@@ -5,17 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-
-import com.idn.yoenaswhatsappclone.R
-import com.idn.yoenaswhatsappclone.util.*
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.idn.yoenaswhatsappclone.R
+import com.idn.yoenaswhatsappclone.util.*
 import kotlinx.android.synthetic.main.fragment_status_update.*
 
 class StatusUpdateFragment : Fragment() {
@@ -50,10 +49,8 @@ class StatusUpdateFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CODE_PHOTO -> storeImage(data?.data)
-            }
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_PHOTO) {
+            storeImage(data?.data)
         }
     }
 
@@ -105,7 +102,8 @@ class StatusUpdateFragment : Fragment() {
     }
 
     private fun onUploadFailure() {
-        Toast.makeText(activity, "Image upload failed. Please try again later", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Image upload failed. Please try again later", Toast.LENGTH_SHORT)
+            .show()
         progress_layout.visibility = View.GONE
     }
 

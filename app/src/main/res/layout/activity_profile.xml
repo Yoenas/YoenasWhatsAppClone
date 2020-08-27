@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProfileActivity">
 
+    <!--    region ActionBar Profile-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_profil"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             app:title="Profile"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
+    <!--endregion-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -32,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/dp16">
+
             <!--region Image Profile-->
             <RelativeLayout
                 android:id="@+id/img_photo"
@@ -49,11 +52,11 @@
 
                 <ImageButton
                     android:id="@+id/imbtn_profile"
+                    style="@style/StandardImageButton"
                     android:layout_width="@dimen/dp50"
                     android:layout_height="@dimen/dp50"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    style="@style/StandardImageButton"
                     android:src="@drawable/ic_camera" />
             </RelativeLayout>
             <!--endregion-->
@@ -73,6 +76,7 @@
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email_profile"
                 style="@style/StandardTextInput"
@@ -87,6 +91,7 @@
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_phone_profile"
                 style="@style/StandardTextInput"
@@ -116,9 +121,12 @@
                 android:layout_centerHorizontal="true"
                 android:text="@string/btn_delete_account" />
             <!--endregion-->
+
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!--    region ProgressLayout-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/progress_layout"
         style="@style/ProgressLayout"
@@ -132,4 +140,8 @@
             android:layout_height="wrap_content" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <!--    endregion-->
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

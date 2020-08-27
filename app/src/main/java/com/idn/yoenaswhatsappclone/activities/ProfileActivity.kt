@@ -3,16 +3,17 @@ package com.idn.yoenaswhatsappclone.activities
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.idn.yoenaswhatsappclone.R
+import com.idn.yoenaswhatsappclone.activities.ConversationActivity.Companion.PARAM_OTHER_USER_ID
 import com.idn.yoenaswhatsappclone.util.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -22,7 +23,9 @@ class ProfileActivity : AppCompatActivity() {
     private val firebaseStorage = FirebaseStorage.getInstance().reference
     private val firebaseDb = FirebaseFirestore.getInstance()
     private val userId = FirebaseAuth.getInstance().currentUser?.uid
+
     private var imageUrl: String? = null
+    private var partnerId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,7 @@ class ProfileActivity : AppCompatActivity() {
         if (userId.isNullOrEmpty()) {
             finish()
         }
+        partnerId = intent.getStringExtra(PARAM_OTHER_USER_ID)
 
         progress_layout.setOnTouchListener { v, event -> true }
 
@@ -52,12 +56,20 @@ class ProfileActivity : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_CODE_PHOTO)
         }
-        populateInfo()
+
+        if (partnerId != null) {
+            imbtn_profile.visibility = View.GONE
+            btn_apply.visibility = View.GONE
+            btn_delete_account.visibility = View.GONE
+            populateInfo(partnerId)
+        } else {
+            populateInfo(userId.toString())
+        }
     }
 
-    private fun populateInfo() {
+    private fun populateInfo(idProfile: String?) {
         progress_layout.visibility = View.VISIBLE
-        firebaseDb.collection(DATA_USERS).document(userId!!).get()
+        firebaseDb.collection(DATA_USERS).document(idProfile!!).get()
             .addOnSuccessListener {
                 val user = it.toObject(User::class.java)
                 imageUrl = user?.imageUrl

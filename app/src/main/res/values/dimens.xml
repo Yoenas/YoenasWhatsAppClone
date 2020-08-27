@@ -19,7 +19,7 @@
     <dimen name="sp14">14sp</dimen>
 <!--    endregion-->
 
-<!--    region additional integers-->
+    <!--    region additional integers-->
     <dimen name="dp5">5dp</dimen>
     <dimen name="dp45">45dp</dimen>
     <dimen name="dp50">50dp</dimen>
@@ -28,5 +28,6 @@
     <dimen name="dp180">180dp</dimen>
     <dimen name="dp200">200dp</dimen>
     <dimen name="dp300">300dp</dimen>
-<!--    endregion-->
+    <dimen name="sp25">25sp</dimen>
+    <!--    endregion-->
 </resources>

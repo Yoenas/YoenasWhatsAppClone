@@ -23,8 +23,8 @@ fun populateImage(
 
 fun progressDrawable(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
-        strokeWidth = 5f
-        centerRadius = 30f
+        strokeWidth = 15f
+        centerRadius = 50f
         start()
     }
 }

@@ -53,9 +53,7 @@ class ChatsAdapter(val chats: ArrayList<String>) :
             progress_layout.visibility = View.VISIBLE
             progress_layout.setOnTouchListener { v, event -> true }
 
-            firebaseDb.collection(DATA_CHATS)
-                .document(chatId)
-                .get()
+            firebaseDb.collection(DATA_CHATS).document(chatId).get()
                 .addOnSuccessListener {
                     val chatParticipants = it[DATA_CHAT_PARTICIPANTS]
                     if (chatParticipants != null){
@@ -93,7 +91,7 @@ class ChatsAdapter(val chats: ArrayList<String>) :
                     progress_layout.visibility = View.GONE
                 }
             itemView.setOnClickListener {
-                listener?.onChatClicked(chatId, userId, chatImageUrl, chatName)
+                listener?.onChatClicked(chatId, partnerId, chatImageUrl, chatName)
             }
         }
     }

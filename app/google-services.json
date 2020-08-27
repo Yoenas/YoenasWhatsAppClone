@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:874056168748:android:643c6f0b3f7015d9f02889",
+        "android_client_info": {
+          "package_name": "com.example.chattutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874056168748-qgbl8l91p787v2dc347tdiv6h8hps2vl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chattutorial",
+            "certificate_hash": "ffc5746bac7bcb54d3ba8b8d2d9714efb982bdaa"
+          }
+        },
+        {
+          "client_id": "874056168748-6bf8367io8amcpshnom0a73ckrbcdqom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQCs_V_FZocFcOLZwaGwYU7RCcYhDOcbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874056168748-6bf8367io8amcpshnom0a73ckrbcdqom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:874056168748:android:346196c798000025f02889",
         "android_client_info": {
           "package_name": "com.idn.yoenaswhatsappclone"
@@ -19,6 +56,43 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.idn.yoenaswhatsappclone",
+            "certificate_hash": "ffc5746bac7bcb54d3ba8b8d2d9714efb982bdaa"
+          }
+        },
+        {
+          "client_id": "874056168748-6bf8367io8amcpshnom0a73ckrbcdqom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQCs_V_FZocFcOLZwaGwYU7RCcYhDOcbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874056168748-6bf8367io8amcpshnom0a73ckrbcdqom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874056168748:android:7f2558c39a4bfd7af02889",
+        "android_client_info": {
+          "package_name": "com.idn.yusrilwhatsappclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874056168748-c5hd7benn51ci5thk40jvnlb18akonhv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.idn.yusrilwhatsappclone",
             "certificate_hash": "ffc5746bac7bcb54d3ba8b8d2d9714efb982bdaa"
           }
         },
